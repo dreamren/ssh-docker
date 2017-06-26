@@ -1,14 +1,11 @@
 FROM centos:6.7
 
-##########################################################################
 ### update glibc-common for locale files
 RUN yum update -y glibc-common
 
-##########################################################################
 # all yum installations here
 RUN yum install -y sudo passwd openssh-server openssh-clients tar screen crontabs strace telnet perl libpcap bc patch ntp dnsmasq unzip pax which
 
-##########################################################################
 # add epel repository
 RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
@@ -27,7 +24,6 @@ RUN (mkdir -p /root/.ssh/; \
      echo "UserKnownHostsFile=/dev/null" >> /root/.ssh/config)
 
 
-##########################################################################
 # passwords 
 RUN echo "root:33345678" | chpasswd
 
